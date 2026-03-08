@@ -110,13 +110,14 @@ def run_clustering(
             continue
 
         # PCA
-        n_comp = min(PCA_COMPONENTS, len(species_embs) - 1)
+        # Use fewer PCA components for better HDBSCAN density estimation
+        n_comp = min(20, len(species_embs) - 1)
         reduced, pca = reduce_dimensions(species_embs, n_components=n_comp)
         pca_models[species] = pca
 
-        # Adaptive HDBSCAN parameters
-        min_cs = max(3, len(species_embs) // 20)
-        min_s = max(2, min_cs // 2)
+        # Use small, fixed parameters — individual birds may have few visits
+        min_cs = 3
+        min_s = 2
         print(f"  PCA: {species_embs.shape[1]} -> {reduced.shape[1]}")
         print(f"  HDBSCAN params: min_cluster_size={min_cs}, min_samples={min_s}")
 
