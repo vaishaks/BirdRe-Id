@@ -109,28 +109,34 @@ def run_clustering(
                 })
             continue
 
-        # PCA (saved for inference, but clustering uses raw embeddings)
-        n_comp = min(20, len(species_embs) - 1)
-        reduced, pca = reduce_dimensions(species_embs, n_components=n_comp)
+        # PCA — drop top N components that capture pose/orientation
+        # Top PCs capture pose (23% + 10% variance), not individual identity
+        N_DROP_POSE = 2  # drop top 2 PCs (pose + lighting)
+        n_comp = min(30, len(species_embs) - 1)
+        pca = PCA(n_components=n_comp, random_state=42)
+        transformed = pca.fit_transform(species_embs)
         pca_models[species] = pca
 
-        # Agglomerative clustering on raw embeddings with cosine distance
-        # Threshold tuned per group size:
-        #   Small groups (<30): tighter threshold to avoid over-merging
-        #   Large groups (30+): threshold that finds ~10-30 individuals
-        from sklearn.cluster import AgglomerativeClustering
-        if len(species_embs) < 30:
-            dist_threshold = 0.35
+        if len(species_embs) >= 30:
+            # Large groups: use pose-corrected embeddings (drop top PCs)
+            drop = min(N_DROP_POSE, n_comp - 1)
+            clustering_embs = transformed[:, drop:n_comp]
+            dist_threshold = 0.8
+            print(f"  PCA {species_embs.shape[1]} -> {n_comp}, dropping top {drop} (pose), using PC{drop}:{n_comp}")
         else:
-            dist_threshold = 0.25
+            # Small groups: use raw embeddings (too few dims after dropping PCs)
+            clustering_embs = species_embs
+            dist_threshold = 0.35
+            print(f"  Using raw embeddings for small group (threshold={dist_threshold})")
 
+        from sklearn.cluster import AgglomerativeClustering
         agg = AgglomerativeClustering(
             n_clusters=None,
             distance_threshold=dist_threshold,
             metric="cosine",
             linkage="average",
         )
-        labels = agg.fit_predict(species_embs)
+        labels = agg.fit_predict(clustering_embs)
 
         # Filter out tiny clusters as noise
         from collections import Counter
@@ -145,7 +151,7 @@ def run_clustering(
             unique_non_noise = len(set(labels) - {-1})
             if unique_non_noise < 2:
                 agg2 = AgglomerativeClustering(n_clusters=2, metric="cosine", linkage="average")
-                labels = agg2.fit_predict(species_embs)
+                labels = agg2.fit_predict(clustering_embs)
 
         print(f"  Agglomerative (threshold={dist_threshold}): {len(set(labels) - {-1})} individuals")
 
