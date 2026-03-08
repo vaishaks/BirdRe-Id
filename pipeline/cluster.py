@@ -109,30 +109,45 @@ def run_clustering(
                 })
             continue
 
-        # PCA
+        # PCA (saved for inference, but clustering uses raw embeddings)
         n_comp = min(20, len(species_embs) - 1)
         reduced, pca = reduce_dimensions(species_embs, n_components=n_comp)
         pca_models[species] = pca
-        print(f"  PCA: {species_embs.shape[1]} -> {reduced.shape[1]}")
 
-        # For small groups, use agglomerative clustering (HDBSCAN needs density variation)
+        # Agglomerative clustering on raw embeddings with cosine distance
+        # Threshold tuned per group size:
+        #   Small groups (<30): tighter threshold to avoid over-merging
+        #   Large groups (30+): threshold that finds ~10-30 individuals
+        from sklearn.cluster import AgglomerativeClustering
         if len(species_embs) < 30:
-            from sklearn.cluster import AgglomerativeClustering
-            agg = AgglomerativeClustering(
-                n_clusters=None,
-                distance_threshold=0.3,
-                metric="cosine",
-                linkage="average",
-            )
-            labels = agg.fit_predict(species_embs)  # Use original embeddings for cosine
-            print(f"  Agglomerative clustering (small group): {len(set(labels))} individuals")
+            dist_threshold = 0.35
         else:
-            # Use HDBSCAN for larger groups
-            min_cs = 3
-            min_s = 2
-            print(f"  HDBSCAN params: min_cluster_size={min_cs}, min_samples={min_s}")
-            labels = cluster_species(reduced, min_cluster_size=min_cs, min_samples=min_s)
-            labels = refine_clusters(labels, reduced)
+            dist_threshold = 0.25
+
+        agg = AgglomerativeClustering(
+            n_clusters=None,
+            distance_threshold=dist_threshold,
+            metric="cosine",
+            linkage="average",
+        )
+        labels = agg.fit_predict(species_embs)
+
+        # Filter out tiny clusters as noise
+        from collections import Counter
+        cluster_counts = Counter(labels)
+        min_size = 3 if len(species_embs) >= 30 else 2
+        for i in range(len(labels)):
+            if cluster_counts[labels[i]] < min_size:
+                labels[i] = -1
+
+        # For mixed-species groups, ensure at least 2 clusters
+        if "mixture" in species.lower() or "mixed" in species.lower() or species == "Chickadee":
+            unique_non_noise = len(set(labels) - {-1})
+            if unique_non_noise < 2:
+                agg2 = AgglomerativeClustering(n_clusters=2, metric="cosine", linkage="average")
+                labels = agg2.fit_predict(species_embs)
+
+        print(f"  Agglomerative (threshold={dist_threshold}): {len(set(labels) - {-1})} individuals")
 
         n_clusters = len(set(labels) - {-1})
         n_noise = sum(1 for l in labels if l == -1)
