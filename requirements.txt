@@ -1,0 +1,14 @@
+torch
+torchvision
+ultralytics
+opencv-python
+scikit-learn
+hdbscan
+faiss-cpu
+umap-learn
+pandas
+numpy
+jupyter
+matplotlib
+Pillow
+tqdm
