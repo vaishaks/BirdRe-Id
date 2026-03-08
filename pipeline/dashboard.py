@@ -155,123 +155,318 @@ def _generate_html(data):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bird Re-ID Dashboard</title>
+<title>Feeder Friends - Bird Re-ID</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1117; color: #e0e0e0; }}
+body {{ font-family: 'Nunito', sans-serif; background: #fef9f0; color: #4a3728; }}
 
 /* Header */
-.header {{ background: #1a1d27; padding: 16px 24px; border-bottom: 1px solid #2a2d37; display: flex; align-items: center; gap: 16px; }}
-.header h1 {{ font-size: 20px; font-weight: 600; color: #fff; }}
-.header .stats {{ font-size: 13px; color: #888; display: flex; gap: 16px; }}
-.header .stats span {{ background: #2a2d37; padding: 4px 10px; border-radius: 12px; }}
+.header {{
+    background: linear-gradient(135deg, #f8e8d0 0%, #fce4c4 50%, #f5ddb8 100%);
+    padding: 20px 32px;
+    border-bottom: 2px solid #e8d0b0;
+    display: flex; align-items: center; gap: 16px;
+}}
+.header h1 {{
+    font-size: 26px; font-weight: 800; color: #6b4226;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}}
+.header h1 .icon {{ font-size: 28px; }}
+.header .stats {{
+    font-size: 13px; color: #8b6b4a; display: flex; gap: 10px; margin-left: auto;
+}}
+.header .stats span {{
+    background: rgba(255,255,255,0.6); padding: 5px 12px; border-radius: 20px;
+    font-weight: 600; backdrop-filter: blur(4px);
+}}
 
-/* Layout */
-.container {{ display: grid; grid-template-columns: 1fr 380px; grid-template-rows: auto 1fr; height: calc(100vh - 60px); }}
-.top-bar {{ grid-column: 1 / -1; background: #1a1d27; padding: 12px 24px; border-bottom: 1px solid #2a2d37; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }}
+/* Filter bar */
+.top-bar {{
+    background: #fff8f0; padding: 14px 32px; border-bottom: 1px solid #ecdcc8;
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+}}
+.filter-label {{ font-size: 13px; color: #a08060; margin-right: 4px; font-weight: 600; }}
+.filter-btn {{
+    padding: 6px 14px; border-radius: 20px; border: 2px solid #e0c8a8;
+    background: transparent; color: #8b6b4a; cursor: pointer;
+    font-size: 12px; font-weight: 700; font-family: 'Nunito', sans-serif;
+    transition: all 0.25s ease;
+}}
+.filter-btn:hover {{ background: #fff0e0; border-color: #d0a878; transform: translateY(-1px); }}
+.filter-btn.active {{ background: #6b4226; border-color: #6b4226; color: #fff; }}
 
-/* Species filters */
-.filter-btn {{ padding: 5px 12px; border-radius: 16px; border: 1px solid #3a3d47; background: transparent; color: #aaa; cursor: pointer; font-size: 12px; transition: all 0.2s; }}
-.filter-btn:hover {{ border-color: #5a5d67; color: #ddd; }}
-.filter-btn.active {{ background: #2563eb; border-color: #2563eb; color: #fff; }}
-.filter-label {{ font-size: 12px; color: #666; margin-right: 4px; }}
+/* Main layout */
+.main-content {{ padding: 24px 32px; }}
 
-/* UMAP panel */
-.umap-panel {{ padding: 16px; overflow: hidden; position: relative; }}
+/* View toggle */
+.view-toggle {{
+    display: flex; gap: 8px; margin-bottom: 20px;
+}}
+.view-btn {{
+    padding: 8px 18px; border-radius: 20px; border: 2px solid #e0c8a8;
+    background: transparent; color: #8b6b4a; cursor: pointer;
+    font-size: 13px; font-weight: 700; font-family: 'Nunito', sans-serif;
+    transition: all 0.25s ease;
+}}
+.view-btn:hover {{ background: #fff0e0; }}
+.view-btn.active {{ background: #6b4226; border-color: #6b4226; color: #fff; }}
+
+/* Bird card grid */
+.bird-grid {{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}}
+.bird-card {{
+    background: #fff; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(107,66,38,0.08);
+    border: 2px solid transparent;
+    cursor: pointer; transition: all 0.3s ease;
+}}
+.bird-card:hover {{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(107,66,38,0.15);
+    border-color: #e0c8a8;
+}}
+.bird-card .card-photos {{
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    height: 180px; overflow: hidden;
+}}
+.bird-card .card-photos img {{
+    width: 100%; height: 100%; object-fit: cover;
+}}
+.bird-card .card-photos.single {{ grid-template-columns: 1fr; }}
+.bird-card .card-body {{ padding: 14px 16px; }}
+.bird-card .card-name {{
+    font-size: 18px; font-weight: 800; color: #6b4226; margin-bottom: 2px;
+}}
+.bird-card .card-species {{
+    font-size: 12px; font-weight: 600; margin-bottom: 8px;
+}}
+.bird-card .card-stats {{
+    display: flex; gap: 12px; font-size: 12px; color: #a08060;
+}}
+.bird-card .card-stats span {{ display: flex; align-items: center; gap: 4px; }}
+
+/* Detail overlay */
+.detail-overlay {{
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(74,55,40,0.4); backdrop-filter: blur(6px);
+    z-index: 1000; justify-content: center; align-items: flex-start;
+    padding: 40px; overflow-y: auto;
+}}
+.detail-overlay.visible {{ display: flex; }}
+.detail-card {{
+    background: #fff; border-radius: 20px; max-width: 720px; width: 100%;
+    box-shadow: 0 20px 60px rgba(107,66,38,0.2);
+    overflow: hidden; animation: slideUp 0.3s ease;
+}}
+@keyframes slideUp {{
+    from {{ transform: translateY(30px); opacity: 0; }}
+    to {{ transform: translateY(0); opacity: 1; }}
+}}
+.detail-hero {{
+    position: relative; height: 280px; overflow: hidden;
+}}
+.detail-hero img {{
+    width: 100%; height: 100%; object-fit: cover;
+}}
+.detail-hero .hero-overlay {{
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    padding: 20px 24px 16px;
+}}
+.detail-hero .hero-name {{
+    font-size: 28px; font-weight: 800; color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}}
+.detail-hero .hero-species {{
+    font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.85);
+}}
+.detail-close {{
+    position: absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.9); border: none; cursor: pointer;
+    font-size: 18px; color: #6b4226; display: flex; align-items: center;
+    justify-content: center; transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}}
+.detail-close:hover {{ background: #fff; transform: scale(1.1); }}
+.detail-body {{ padding: 24px; }}
+.detail-stats {{
+    display: flex; gap: 16px; margin-bottom: 24px;
+}}
+.detail-stat {{
+    flex: 1; background: #fef5e8; border-radius: 12px; padding: 14px;
+    text-align: center;
+}}
+.detail-stat .stat-value {{ font-size: 24px; font-weight: 800; color: #6b4226; }}
+.detail-stat .stat-label {{ font-size: 11px; font-weight: 600; color: #a08060; text-transform: uppercase; letter-spacing: 0.5px; }}
+
+.detail-section {{ margin-bottom: 24px; }}
+.detail-section h3 {{
+    font-size: 14px; font-weight: 700; color: #8b6b4a;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 2px solid #f0e0d0;
+}}
+
+/* Photo gallery in detail */
+.photo-gallery {{
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+}}
+.photo-item {{
+    position: relative; border-radius: 10px; overflow: hidden;
+    aspect-ratio: 1; cursor: pointer;
+}}
+.photo-item img {{
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.3s;
+}}
+.photo-item:hover img {{ transform: scale(1.05); }}
+.photo-item .heatmap-toggle {{
+    position: absolute; bottom: 6px; right: 6px;
+    background: rgba(107,66,38,0.8); border: none; color: #fff;
+    font-size: 10px; padding: 4px 8px; border-radius: 8px; cursor: pointer;
+    font-weight: 700; font-family: 'Nunito', sans-serif;
+    backdrop-filter: blur(4px); transition: all 0.2s;
+}}
+.photo-item .heatmap-toggle:hover {{ background: #6b4226; }}
+.photo-item .heatmap-toggle.showing-heatmap {{ background: #d4763a; }}
+
+/* Friends list */
+.friends-list {{ display: flex; flex-wrap: wrap; gap: 8px; }}
+.friend-chip {{
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 20px;
+    background: #fef5e8; border: 1px solid #e8d0b0;
+    cursor: pointer; font-size: 12px; font-weight: 600;
+    transition: all 0.2s;
+}}
+.friend-chip:hover {{ background: #fce4c4; transform: translateY(-1px); }}
+.friend-chip .friend-count {{ color: #a08060; font-weight: 400; }}
+
+/* UMAP panel (collapsible) */
+.umap-section {{
+    background: #fff; border-radius: 16px; padding: 20px;
+    box-shadow: 0 2px 12px rgba(107,66,38,0.08);
+    margin-bottom: 24px;
+}}
+.umap-header {{
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; user-select: none;
+}}
+.umap-header h3 {{
+    font-size: 14px; font-weight: 700; color: #8b6b4a;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    border: none; padding: 0; margin: 0;
+}}
+.umap-toggle {{
+    font-size: 13px; color: #a08060; font-weight: 600;
+    transition: transform 0.3s;
+}}
+.umap-toggle.collapsed {{ transform: rotate(-90deg); }}
+.umap-body {{ margin-top: 16px; display: none; }}
+.umap-body.expanded {{ display: block; }}
+.umap-canvas-wrap {{ position: relative; height: 400px; border-radius: 12px; overflow: hidden; background: #fef9f0; }}
 .umap-canvas {{ width: 100%; height: 100%; cursor: crosshair; }}
 
-/* Sidebar */
-.sidebar {{ background: #1a1d27; border-left: 1px solid #2a2d37; overflow-y: auto; padding: 0; }}
-.sidebar-section {{ padding: 16px; border-bottom: 1px solid #2a2d37; }}
-.sidebar-section h3 {{ font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }}
-
-/* Bird card */
-.bird-card {{ background: #22252f; border-radius: 8px; padding: 14px; margin-bottom: 10px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }}
-.bird-card:hover {{ border-color: #3a3d47; }}
-.bird-card.selected {{ border-color: #2563eb; background: #1e2338; }}
-.bird-card .bird-name {{ font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; }}
-.bird-card .bird-meta {{ font-size: 12px; color: #888; }}
-.bird-card .bird-species {{ font-size: 11px; color: #2563eb; margin-bottom: 4px; }}
-
-/* Detail panel */
-.detail-panel {{ display: none; }}
-.detail-panel.visible {{ display: block; }}
-.detail-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }}
-.detail-header h2 {{ font-size: 16px; color: #fff; }}
-.back-btn {{ background: none; border: none; color: #2563eb; cursor: pointer; font-size: 13px; }}
-.crop-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 12px; }}
-.crop-item {{ position: relative; }}
-.crop-item img {{ width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; border: 1px solid #2a2d37; }}
-.crop-item .toggle-heatmap {{ position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.7); border: none; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px; cursor: pointer; }}
-.crop-item .toggle-heatmap:hover {{ background: #2563eb; }}
-
-/* Species stats */
-.species-stat {{ display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #2a2d37; }}
-.species-stat:last-child {{ border-bottom: none; }}
-.species-stat .name {{ font-size: 13px; color: #ddd; }}
-.species-stat .count {{ font-size: 13px; color: #888; }}
-
-/* Bird list */
-.bird-list {{ max-height: 50vh; overflow-y: auto; }}
-
 /* Tooltip */
-.tooltip {{ position: absolute; background: #2a2d37; padding: 8px 12px; border-radius: 6px; font-size: 12px; pointer-events: none; z-index: 100; border: 1px solid #3a3d47; box-shadow: 0 4px 12px rgba(0,0,0,0.4); display: none; }}
-.tooltip .tt-bird {{ color: #fff; font-weight: 600; }}
-.tooltip .tt-species {{ color: #2563eb; }}
-.tooltip .tt-meta {{ color: #888; }}
+.tooltip {{
+    position: fixed; background: #fff; padding: 10px 14px; border-radius: 10px;
+    font-size: 12px; pointer-events: none; z-index: 2000;
+    border: 2px solid #e8d0b0;
+    box-shadow: 0 4px 16px rgba(107,66,38,0.15); display: none;
+}}
+.tooltip .tt-bird {{ color: #6b4226; font-weight: 800; font-size: 14px; }}
+.tooltip .tt-species {{ font-weight: 600; }}
+.tooltip .tt-meta {{ color: #a08060; }}
+
+/* Species summary cards */
+.species-cards {{
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px; margin-bottom: 24px;
+}}
+.species-card {{
+    background: #fff; border-radius: 12px; padding: 16px;
+    box-shadow: 0 2px 8px rgba(107,66,38,0.06);
+    border-left: 4px solid;
+    cursor: pointer; transition: all 0.2s;
+}}
+.species-card:hover {{ transform: translateY(-2px); box-shadow: 0 4px 16px rgba(107,66,38,0.12); }}
+.species-card .sp-name {{ font-size: 14px; font-weight: 700; color: #6b4226; }}
+.species-card .sp-stats {{ font-size: 12px; color: #a08060; margin-top: 4px; }}
 
 /* Scrollbar */
-::-webkit-scrollbar {{ width: 6px; }}
+::-webkit-scrollbar {{ width: 8px; }}
 ::-webkit-scrollbar-track {{ background: transparent; }}
-::-webkit-scrollbar-thumb {{ background: #3a3d47; border-radius: 3px; }}
+::-webkit-scrollbar-thumb {{ background: #dcc8a8; border-radius: 4px; }}
+::-webkit-scrollbar-thumb:hover {{ background: #c0a880; }}
+
+/* Responsive */
+@media (max-width: 768px) {{
+    .bird-grid {{ grid-template-columns: 1fr 1fr; gap: 12px; }}
+    .main-content {{ padding: 16px; }}
+    .photo-gallery {{ grid-template-columns: repeat(3, 1fr); }}
+}}
 </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>Bird Re-Identification Dashboard</h1>
+    <h1><span class="icon">&#x1F426;</span> Feeder Friends</h1>
     <div class="stats" id="header-stats"></div>
 </div>
 
-<div class="container">
-    <div class="top-bar">
-        <span class="filter-label">Species:</span>
-        <button class="filter-btn active" data-species="all">All</button>
-    </div>
+<div class="top-bar" id="filter-bar">
+    <span class="filter-label">Species:</span>
+    <button class="filter-btn active" data-species="all">All Friends</button>
+</div>
 
-    <div class="umap-panel">
-        <canvas class="umap-canvas" id="umap-canvas"></canvas>
-        <div class="tooltip" id="tooltip"></div>
-    </div>
+<div class="main-content">
+    <div class="species-cards" id="species-cards"></div>
+    <div class="bird-grid" id="bird-grid"></div>
 
-    <div class="sidebar">
-        <div id="list-view">
-            <div class="sidebar-section">
-                <h3>Species Summary</h3>
-                <div id="species-stats"></div>
-            </div>
-            <div class="sidebar-section">
-                <h3>Individuals <span id="bird-count"></span></h3>
-                <div class="bird-list" id="bird-list"></div>
-            </div>
+    <div class="umap-section">
+        <div class="umap-header" id="umap-header">
+            <h3>&#x1F50D; Embedding Space</h3>
+            <span class="umap-toggle collapsed" id="umap-toggle">&#x25BC;</span>
         </div>
-
-        <div class="detail-panel" id="detail-view">
-            <div class="sidebar-section">
-                <div class="detail-header">
-                    <h2 id="detail-name"></h2>
-                    <button class="back-btn" id="back-btn">Back</button>
-                </div>
-                <div id="detail-species" class="bird-species" style="margin-bottom:8px;"></div>
-                <div id="detail-meta" class="bird-meta" style="margin-bottom:14px;"></div>
-                <h3 style="margin-bottom:8px;">Example Crops</h3>
-                <div class="crop-grid" id="detail-crops"></div>
-                <h3 style="margin-bottom:8px;">Co-occurring Birds</h3>
-                <div id="detail-cooccur"></div>
+        <div class="umap-body" id="umap-body">
+            <div class="umap-canvas-wrap">
+                <canvas class="umap-canvas" id="umap-canvas"></canvas>
             </div>
         </div>
     </div>
 </div>
+
+<div class="detail-overlay" id="detail-overlay">
+    <div class="detail-card" id="detail-card">
+        <div class="detail-hero" id="detail-hero">
+            <img id="detail-hero-img" src="" alt="">
+            <button class="detail-close" id="detail-close">&#x2715;</button>
+            <div class="hero-overlay">
+                <div class="hero-name" id="detail-name"></div>
+                <div class="hero-species" id="detail-species"></div>
+            </div>
+        </div>
+        <div class="detail-body">
+            <div class="detail-stats" id="detail-stats"></div>
+            <div class="detail-section">
+                <h3>&#x1F4F8; Photo Gallery</h3>
+                <div class="photo-gallery" id="detail-gallery"></div>
+            </div>
+            <div class="detail-section">
+                <h3>&#x1F91D; Feeder Friends</h3>
+                <div class="friends-list" id="detail-friends"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
 
 <script>
 const DATA = {data_json};
@@ -279,47 +474,35 @@ const DATA = {data_json};
 // --- State ---
 let selectedSpecies = "all";
 let selectedBird = null;
-let hoveredPoint = null;
 
-// --- Species colors ---
+// --- Species colors (warm palette) ---
 const SPECIES_COLORS = {{}};
 const SPECIES_LIST = Object.keys(DATA.species_summary).sort();
 const COLOR_PALETTE = [
-    "#2563eb", "#dc2626", "#16a34a", "#d97706", "#7c3aed",
-    "#db2777", "#0891b2", "#65a30d", "#ea580c", "#4f46e5",
+    "#d4763a", "#6b8e4e", "#c45b84", "#8b6bb0", "#3d8fa6",
+    "#c4873a", "#7a6b52", "#5b8e8e", "#9e5b5b", "#5b7e9e",
 ];
 SPECIES_LIST.forEach((sp, i) => {{
     SPECIES_COLORS[sp] = COLOR_PALETTE[i % COLOR_PALETTE.length];
 }});
 
-// --- Bird colors (unique per bird within species) ---
-function getBirdColor(birdId) {{
-    const sp = DATA.bird_profiles[birdId]?.species || "";
-    const baseColor = SPECIES_COLORS[sp] || "#888";
-    // Vary brightness per bird
-    const birdNum = parseInt(birdId.match(/\\d+$/)?.[0] || "0");
-    const lighten = (birdNum % 5) * 12;
-    return baseColor;  // Keep species color for UMAP, distinguish in list
-}}
-
-// --- Init header stats ---
+// --- Header ---
 function initHeader() {{
     const totalBirds = Object.keys(DATA.bird_profiles).length;
     const totalSessions = DATA.umap_points.length;
     const totalVideos = new Set(DATA.umap_points.map(p => p.video_id)).size;
     document.getElementById("header-stats").innerHTML =
-        `<span>${{totalBirds}} individuals</span><span>${{totalSessions}} sessions</span><span>${{totalVideos}} videos</span><span>${{SPECIES_LIST.length}} species</span>`;
+        `<span>&#x1F425; ${{totalBirds}} birds</span><span>&#x1F3AC; ${{totalSessions}} sightings</span><span>&#x1F4F9; ${{totalVideos}} videos</span>`;
 }}
 
 // --- Species filters ---
 function initFilters() {{
-    const bar = document.querySelector(".top-bar");
+    const bar = document.getElementById("filter-bar");
     SPECIES_LIST.forEach(sp => {{
         const btn = document.createElement("button");
         btn.className = "filter-btn";
         btn.dataset.species = sp;
         btn.textContent = sp;
-        btn.style.borderColor = SPECIES_COLORS[sp];
         btn.addEventListener("click", () => setSpeciesFilter(sp));
         bar.appendChild(btn);
     }});
@@ -331,76 +514,96 @@ function setSpeciesFilter(sp) {{
     document.querySelectorAll(".filter-btn").forEach(b => {{
         b.classList.toggle("active", b.dataset.species === sp);
     }});
-    renderBirdList();
-    drawUMAP();
+    renderSpeciesCards();
+    renderBirdGrid();
+    if (umapExpanded) drawUMAP();
 }}
 
-// --- Species stats ---
-function initSpeciesStats() {{
-    const container = document.getElementById("species-stats");
+// --- Species cards ---
+function renderSpeciesCards() {{
+    const container = document.getElementById("species-cards");
     let html = "";
     for (const [sp, stats] of Object.entries(DATA.species_summary)) {{
-        html += `<div class="species-stat">
-            <span class="name" style="color:${{SPECIES_COLORS[sp]}}">${{sp}}</span>
-            <span class="count">${{stats.n_birds}} birds / ${{stats.n_sessions}} sessions</span>
+        if (selectedSpecies !== "all" && sp !== selectedSpecies) continue;
+        const color = SPECIES_COLORS[sp];
+        html += `<div class="species-card" style="border-left-color:${{color}}" onclick="setSpeciesFilter('${{sp}}')">
+            <div class="sp-name">${{sp}}</div>
+            <div class="sp-stats">${{stats.n_birds}} individuals &middot; ${{stats.n_sessions}} sightings</div>
         </div>`;
     }}
     container.innerHTML = html;
 }}
 
-// --- Bird list ---
-function renderBirdList() {{
-    const container = document.getElementById("bird-list");
+// --- Bird grid ---
+function renderBirdGrid() {{
+    const container = document.getElementById("bird-grid");
     const birds = Object.entries(DATA.bird_profiles)
         .filter(([id, info]) => selectedSpecies === "all" || info.species === selectedSpecies)
         .filter(([id]) => !id.includes("noise"))
         .sort((a, b) => b[1].n_sessions - a[1].n_sessions);
 
-    document.getElementById("bird-count").textContent = `(${{birds.length}})`;
-
     let html = "";
     for (const [birdId, info] of birds) {{
-        const sel = selectedBird === birdId ? "selected" : "";
-        html += `<div class="bird-card ${{sel}}" data-bird="${{birdId}}" onclick="selectBird('${{birdId}}')">
-            <div class="bird-species" style="color:${{SPECIES_COLORS[info.species]}}">${{info.species}}</div>
-            <div class="bird-name">${{info.name}}</div>
-            <div class="bird-meta">${{info.n_sessions}} sessions across ${{info.n_videos}} videos</div>
-        </div>`;
+        const color = SPECIES_COLORS[info.species];
+        const photos = info.crops.slice(0, 4);
+        const gridClass = photos.length === 1 ? "card-photos single" : "card-photos";
+
+        html += `<div class="bird-card" onclick="openDetail('${{birdId}}')">`;
+        html += `<div class="${{gridClass}}">`;
+        for (const crop of photos) {{
+            html += `<img src="${{crop.original}}" alt="${{info.name}}" loading="lazy">`;
+        }}
+        html += `</div>`;
+        html += `<div class="card-body">`;
+        html += `<div class="card-name">${{info.name}}</div>`;
+        html += `<div class="card-species" style="color:${{color}}">${{info.species}}</div>`;
+        html += `<div class="card-stats">`;
+        html += `<span>&#x1F441; ${{info.n_sessions}} sightings</span>`;
+        html += `<span>&#x1F4F9; ${{info.n_videos}} videos</span>`;
+        html += `</div></div></div>`;
     }}
     container.innerHTML = html;
 }}
 
-// --- Bird detail ---
-function selectBird(birdId) {{
+// --- Detail overlay ---
+function openDetail(birdId) {{
     selectedBird = birdId;
     const info = DATA.bird_profiles[birdId];
     if (!info) return;
 
-    document.getElementById("list-view").style.display = "none";
-    document.getElementById("detail-view").classList.add("visible");
+    const overlay = document.getElementById("detail-overlay");
+    overlay.classList.add("visible");
+    document.body.style.overflow = "hidden";
 
+    // Hero image
+    const heroImg = document.getElementById("detail-hero-img");
+    heroImg.src = info.crops.length > 0 ? info.crops[0].original : "";
     document.getElementById("detail-name").textContent = info.name;
     document.getElementById("detail-species").textContent = info.species;
-    document.getElementById("detail-species").style.color = SPECIES_COLORS[info.species];
-    document.getElementById("detail-meta").textContent =
-        `${{info.n_sessions}} sessions across ${{info.n_videos}} videos`;
 
-    // Crops
-    const cropsContainer = document.getElementById("detail-crops");
-    let cropsHtml = "";
+    // Stats
+    document.getElementById("detail-stats").innerHTML = `
+        <div class="detail-stat"><div class="stat-value">${{info.n_sessions}}</div><div class="stat-label">Sightings</div></div>
+        <div class="detail-stat"><div class="stat-value">${{info.n_videos}}</div><div class="stat-label">Videos</div></div>
+        <div class="detail-stat"><div class="stat-value">${{info.crops.length}}</div><div class="stat-label">Photos</div></div>
+    `;
+
+    // Photo gallery with heatmap toggle
+    const gallery = document.getElementById("detail-gallery");
+    let gHtml = "";
     for (const crop of info.crops) {{
-        const heatmapBtn = crop.heatmap
-            ? `<button class="toggle-heatmap" onclick="toggleHeatmap(event, this)">Attention</button>`
+        const toggleBtn = crop.heatmap
+            ? `<button class="heatmap-toggle" onclick="toggleHeatmap(event, this)">&#x1F525; Features</button>`
             : "";
-        cropsHtml += `<div class="crop-item" data-original="${{crop.original}}" data-heatmap="${{crop.heatmap || ""}}">
-            <img src="${{crop.original}}" alt="crop">
-            ${{heatmapBtn}}
+        gHtml += `<div class="photo-item" data-original="${{crop.original}}" data-heatmap="${{crop.heatmap || ""}}">
+            <img src="${{crop.original}}" alt="photo">
+            ${{toggleBtn}}
         </div>`;
     }}
-    cropsContainer.innerHTML = cropsHtml;
+    gallery.innerHTML = gHtml;
 
-    // Co-occurring birds
-    const coContainer = document.getElementById("detail-cooccur");
+    // Friends
+    const friendsContainer = document.getElementById("detail-friends");
     const birdVideos = new Set();
     DATA.umap_points.filter(p => p.bird_id === birdId).forEach(p => birdVideos.add(p.video_id));
     const coOccur = {{}};
@@ -412,66 +615,75 @@ function selectBird(birdId) {{
             }}
         }}
     }}
-    const coList = Object.entries(coOccur).sort((a, b) => b[1] - a[1]).slice(0, 10);
+    const coList = Object.entries(coOccur).sort((a, b) => b[1] - a[1]).slice(0, 12);
     if (coList.length > 0) {{
-        let coHtml = "";
+        let fHtml = "";
         for (const [otherId, count] of coList) {{
             const otherInfo = DATA.bird_profiles[otherId];
-            const sp = otherInfo?.species || "";
-            const otherName = otherInfo?.name || otherId;
-            coHtml += `<div class="species-stat" style="cursor:pointer" onclick="selectBird('${{otherId}}')">
-                <span class="name" style="color:${{SPECIES_COLORS[sp]}}">${{otherName}}</span>
-                <span class="count">${{count}} shared videos</span>
+            const color = SPECIES_COLORS[otherInfo?.species] || "#888";
+            const name = otherInfo?.name || otherId;
+            fHtml += `<div class="friend-chip" onclick="event.stopPropagation(); closeDetail(); setTimeout(() => openDetail('${{otherId}}'), 350);">
+                <span style="color:${{color}}">${{name}}</span>
+                <span class="friend-count">${{count}}x</span>
             </div>`;
         }}
-        coContainer.innerHTML = coHtml;
+        friendsContainer.innerHTML = fHtml;
     }} else {{
-        coContainer.innerHTML = '<div class="bird-meta">No co-occurring birds found</div>';
+        friendsContainer.innerHTML = '<span style="color:#a08060; font-size:13px;">Prefers solo visits</span>';
     }}
-
-    drawUMAP();
 }}
 
-function goBack() {{
+function closeDetail() {{
     selectedBird = null;
-    document.getElementById("list-view").style.display = "block";
-    document.getElementById("detail-view").classList.remove("visible");
-    renderBirdList();
-    drawUMAP();
+    document.getElementById("detail-overlay").classList.remove("visible");
+    document.body.style.overflow = "";
 }}
-document.getElementById("back-btn").addEventListener("click", goBack);
+
+document.getElementById("detail-close").addEventListener("click", closeDetail);
+document.getElementById("detail-overlay").addEventListener("click", (e) => {{
+    if (e.target === document.getElementById("detail-overlay")) closeDetail();
+}});
 
 // --- Heatmap toggle ---
 function toggleHeatmap(event, btn) {{
     event.stopPropagation();
-    const item = btn.closest(".crop-item");
+    const item = btn.closest(".photo-item");
     const img = item.querySelector("img");
     const original = item.dataset.original;
     const heatmap = item.dataset.heatmap;
     if (!heatmap) return;
 
-    if (img.src === original || img.getAttribute("src") === original) {{
+    if (!btn.classList.contains("showing-heatmap")) {{
         img.src = heatmap;
-        btn.textContent = "Original";
-        btn.style.background = "#2563eb";
+        btn.innerHTML = "&#x1F4F7; Photo";
+        btn.classList.add("showing-heatmap");
     }} else {{
         img.src = original;
-        btn.textContent = "Attention";
-        btn.style.background = "rgba(0,0,0,0.7)";
+        btn.innerHTML = "&#x1F525; Features";
+        btn.classList.remove("showing-heatmap");
     }}
 }}
 
-// --- UMAP Canvas ---
+// --- UMAP (collapsible) ---
+let umapExpanded = false;
 const canvas = document.getElementById("umap-canvas");
 const ctx = canvas.getContext("2d");
-const tooltip = document.getElementById("tooltip");
-
-let transform = {{ scale: 1, offsetX: 0, offsetY: 0 }};
+const tooltipEl = document.getElementById("tooltip");
+let umapTransform = {{ scale: 1, offsetX: 0, offsetY: 0 }};
 let isDragging = false;
 let dragStart = {{ x: 0, y: 0 }};
+let hoveredPoint = null;
+
+document.getElementById("umap-header").addEventListener("click", () => {{
+    umapExpanded = !umapExpanded;
+    document.getElementById("umap-body").classList.toggle("expanded", umapExpanded);
+    document.getElementById("umap-toggle").classList.toggle("collapsed", !umapExpanded);
+    if (umapExpanded) {{ setTimeout(resizeCanvas, 50); }}
+}});
 
 function resizeCanvas() {{
-    const rect = canvas.parentElement.getBoundingClientRect();
+    const wrap = canvas.parentElement;
+    const rect = wrap.getBoundingClientRect();
     canvas.width = rect.width * window.devicePixelRatio;
     canvas.height = rect.height * window.devicePixelRatio;
     canvas.style.width = rect.width + "px";
@@ -481,170 +693,85 @@ function resizeCanvas() {{
 }}
 
 function getVisiblePoints() {{
-    return DATA.umap_points.filter(p => {{
-        if (selectedSpecies !== "all" && p.species !== selectedSpecies) return false;
-        return true;
-    }});
+    return DATA.umap_points.filter(p => selectedSpecies === "all" || p.species === selectedSpecies);
 }}
 
 function mapToCanvas(x, y) {{
     const points = DATA.umap_points;
-    const xs = points.map(p => p.x);
-    const ys = points.map(p => p.y);
+    const xs = points.map(p => p.x), ys = points.map(p => p.y);
     const minX = Math.min(...xs), maxX = Math.max(...xs);
     const minY = Math.min(...ys), maxY = Math.max(...ys);
-    const padding = 40;
-
-    const w = canvas.width / window.devicePixelRatio - padding * 2;
-    const h = canvas.height / window.devicePixelRatio - padding * 2;
-
-    const rangeX = maxX - minX || 1;
-    const rangeY = maxY - minY || 1;
-    const scale = Math.min(w / rangeX, h / rangeY) * transform.scale;
-
-    const cx = (x - (minX + maxX) / 2) * scale + canvas.width / window.devicePixelRatio / 2 + transform.offsetX;
-    const cy = (y - (minY + maxY) / 2) * -scale + canvas.height / window.devicePixelRatio / 2 + transform.offsetY;
-    return {{ cx, cy }};
+    const pad = 40;
+    const w = canvas.width / window.devicePixelRatio - pad * 2;
+    const h = canvas.height / window.devicePixelRatio - pad * 2;
+    const scale = Math.min(w / (maxX - minX || 1), h / (maxY - minY || 1)) * umapTransform.scale;
+    return {{
+        cx: (x - (minX + maxX) / 2) * scale + canvas.width / window.devicePixelRatio / 2 + umapTransform.offsetX,
+        cy: (y - (minY + maxY) / 2) * -scale + canvas.height / window.devicePixelRatio / 2 + umapTransform.offsetY,
+    }};
 }}
 
 function drawUMAP() {{
     const w = canvas.width / window.devicePixelRatio;
     const h = canvas.height / window.devicePixelRatio;
     ctx.clearRect(0, 0, w, h);
-
     const visible = getVisiblePoints();
-
-    // Draw non-selected points first (dimmed)
     for (const p of visible) {{
         const {{ cx, cy }} = mapToCanvas(p.x, p.y);
-        const isSelected = selectedBird && p.bird_id === selectedBird;
-        const isHighlighted = hoveredPoint && p.bird_id === hoveredPoint;
-
-        if (isSelected || isHighlighted) continue;
-
+        const isHov = hoveredPoint && p.bird_id === hoveredPoint;
         ctx.beginPath();
-        ctx.arc(cx, cy, selectedBird ? 2 : 3, 0, Math.PI * 2);
-        const color = SPECIES_COLORS[p.species] || "#888";
-        ctx.fillStyle = selectedBird ? color + "30" : color + "aa";
+        ctx.arc(cx, cy, isHov ? 5 : 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = (SPECIES_COLORS[p.species] || "#888") + (isHov ? "ff" : "99");
         ctx.fill();
-    }}
-
-    // Draw selected/highlighted points on top
-    for (const p of visible) {{
-        const {{ cx, cy }} = mapToCanvas(p.x, p.y);
-        const isSelected = selectedBird && p.bird_id === selectedBird;
-        const isHighlighted = hoveredPoint && p.bird_id === hoveredPoint;
-
-        if (!isSelected && !isHighlighted) continue;
-
-        ctx.beginPath();
-        ctx.arc(cx, cy, isSelected ? 5 : 4, 0, Math.PI * 2);
-        ctx.fillStyle = SPECIES_COLORS[p.species] || "#888";
-        ctx.fill();
-        ctx.strokeStyle = "#fff";
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
+        if (isHov) {{ ctx.strokeStyle = "#6b4226"; ctx.lineWidth = 1.5; ctx.stroke(); }}
     }}
 }}
 
-// --- Mouse interactions ---
 canvas.addEventListener("mousemove", (e) => {{
-    if (isDragging) {{
-        transform.offsetX += e.movementX;
-        transform.offsetY += e.movementY;
-        drawUMAP();
-        return;
-    }}
-
+    if (isDragging) {{ umapTransform.offsetX += e.movementX; umapTransform.offsetY += e.movementY; drawUMAP(); return; }}
     const rect = canvas.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
-
-    let closest = null;
-    let closestDist = 10;
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    let closest = null, closestDist = 12;
     for (const p of getVisiblePoints()) {{
         const {{ cx, cy }} = mapToCanvas(p.x, p.y);
-        const d = Math.sqrt((cx - mx) ** 2 + (cy - my) ** 2);
-        if (d < closestDist) {{
-            closest = p;
-            closestDist = d;
-        }}
+        const d = Math.hypot(cx - mx, cy - my);
+        if (d < closestDist) {{ closest = p; closestDist = d; }}
     }}
-
     if (closest) {{
         hoveredPoint = closest.bird_id;
-        tooltip.style.display = "block";
-        tooltip.style.left = (e.clientX - canvas.parentElement.getBoundingClientRect().left + 12) + "px";
-        tooltip.style.top = (e.clientY - canvas.parentElement.getBoundingClientRect().top - 10) + "px";
         const info = DATA.bird_profiles[closest.bird_id];
-        const displayName = info?.name || closest.bird_name || closest.bird_id;
-        tooltip.innerHTML = `
-            <div class="tt-bird">${{displayName}}</div>
-            <div class="tt-species">${{closest.species}}</div>
-            <div class="tt-meta">${{info ? info.n_sessions + " sessions" : closest.session_id}}</div>
-        `;
+        tooltipEl.style.display = "block";
+        tooltipEl.style.left = (e.clientX + 14) + "px";
+        tooltipEl.style.top = (e.clientY - 10) + "px";
+        tooltipEl.innerHTML = `<div class="tt-bird">${{info?.name || closest.bird_id}}</div>
+            <div class="tt-species" style="color:${{SPECIES_COLORS[closest.species]}}">${{closest.species}}</div>
+            <div class="tt-meta">${{info?.n_sessions || "?"}} sightings</div>`;
         drawUMAP();
-    }} else {{
-        if (hoveredPoint) {{
-            hoveredPoint = null;
-            tooltip.style.display = "none";
-            drawUMAP();
-        }}
+    }} else if (hoveredPoint) {{
+        hoveredPoint = null; tooltipEl.style.display = "none"; drawUMAP();
     }}
 }});
-
-canvas.addEventListener("mousedown", (e) => {{
-    isDragging = true;
-    dragStart = {{ x: e.clientX, y: e.clientY }};
-}});
-
+canvas.addEventListener("mousedown", (e) => {{ isDragging = true; dragStart = {{x: e.clientX, y: e.clientY}}; }});
 canvas.addEventListener("mouseup", (e) => {{
-    const dx = e.clientX - dragStart.x;
-    const dy = e.clientY - dragStart.y;
     isDragging = false;
-
-    // If it was a click (not drag), select bird
-    if (Math.abs(dx) < 3 && Math.abs(dy) < 3) {{
+    if (Math.abs(e.clientX - dragStart.x) < 3 && Math.abs(e.clientY - dragStart.y) < 3) {{
         const rect = canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
-
-        let closest = null;
-        let closestDist = 10;
+        const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+        let closest = null, closestDist = 12;
         for (const p of getVisiblePoints()) {{
             const {{ cx, cy }} = mapToCanvas(p.x, p.y);
-            const d = Math.sqrt((cx - mx) ** 2 + (cy - my) ** 2);
-            if (d < closestDist) {{
-                closest = p;
-                closestDist = d;
-            }}
+            if (Math.hypot(cx - mx, cy - my) < closestDist) {{ closest = p; closestDist = Math.hypot(cx - mx, cy - my); }}
         }}
-
-        if (closest && !closest.bird_id.includes("noise")) {{
-            selectBird(closest.bird_id);
-        }}
+        if (closest && !closest.bird_id.includes("noise")) openDetail(closest.bird_id);
     }}
 }});
-
-canvas.addEventListener("wheel", (e) => {{
-    e.preventDefault();
-    const factor = e.deltaY > 0 ? 0.9 : 1.1;
-    transform.scale *= factor;
-    transform.scale = Math.max(0.5, Math.min(10, transform.scale));
-    drawUMAP();
-}});
-
-canvas.addEventListener("mouseleave", () => {{
-    isDragging = false;
-    hoveredPoint = null;
-    tooltip.style.display = "none";
-    drawUMAP();
-}});
+canvas.addEventListener("wheel", (e) => {{ e.preventDefault(); umapTransform.scale *= e.deltaY > 0 ? 0.9 : 1.1; umapTransform.scale = Math.max(0.5, Math.min(10, umapTransform.scale)); drawUMAP(); }});
+canvas.addEventListener("mouseleave", () => {{ isDragging = false; hoveredPoint = null; tooltipEl.style.display = "none"; drawUMAP(); }});
 
 // --- Keyboard ---
 document.addEventListener("keydown", (e) => {{
     if (e.key === "Escape") {{
-        if (selectedBird) goBack();
+        if (selectedBird) closeDetail();
         else setSpeciesFilter("all");
     }}
 }});
@@ -652,10 +779,9 @@ document.addEventListener("keydown", (e) => {{
 // --- Init ---
 initHeader();
 initFilters();
-initSpeciesStats();
-renderBirdList();
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
+renderSpeciesCards();
+renderBirdGrid();
+window.addEventListener("resize", () => {{ if (umapExpanded) resizeCanvas(); }});
 </script>
 </body>
 </html>"""
