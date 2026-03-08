@@ -1,0 +1,7 @@
+raw_data/
+data/frames/
+data/crops/
+embeddings/*.npy
+models/
+__pycache__/
+.DS_Store
