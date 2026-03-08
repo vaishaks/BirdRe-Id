@@ -110,19 +110,29 @@ def run_clustering(
             continue
 
         # PCA
-        # Use fewer PCA components for better HDBSCAN density estimation
         n_comp = min(20, len(species_embs) - 1)
         reduced, pca = reduce_dimensions(species_embs, n_components=n_comp)
         pca_models[species] = pca
-
-        # Use small, fixed parameters — individual birds may have few visits
-        min_cs = 3
-        min_s = 2
         print(f"  PCA: {species_embs.shape[1]} -> {reduced.shape[1]}")
-        print(f"  HDBSCAN params: min_cluster_size={min_cs}, min_samples={min_s}")
 
-        labels = cluster_species(reduced, min_cluster_size=min_cs, min_samples=min_s)
-        labels = refine_clusters(labels, reduced)
+        # For small groups, use agglomerative clustering (HDBSCAN needs density variation)
+        if len(species_embs) < 30:
+            from sklearn.cluster import AgglomerativeClustering
+            agg = AgglomerativeClustering(
+                n_clusters=None,
+                distance_threshold=0.3,
+                metric="cosine",
+                linkage="average",
+            )
+            labels = agg.fit_predict(species_embs)  # Use original embeddings for cosine
+            print(f"  Agglomerative clustering (small group): {len(set(labels))} individuals")
+        else:
+            # Use HDBSCAN for larger groups
+            min_cs = 3
+            min_s = 2
+            print(f"  HDBSCAN params: min_cluster_size={min_cs}, min_samples={min_s}")
+            labels = cluster_species(reduced, min_cluster_size=min_cs, min_samples=min_s)
+            labels = refine_clusters(labels, reduced)
 
         n_clusters = len(set(labels) - {-1})
         n_noise = sum(1 for l in labels if l == -1)
