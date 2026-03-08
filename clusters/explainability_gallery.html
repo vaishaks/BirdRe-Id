@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html><head><style>
+body { font-family: sans-serif; margin: 20px; background: #f5f5f5; }
+.species-group { margin: 30px 0; }
+.species-group h2 { color: #333; border-bottom: 2px solid #666; padding-bottom: 5px; }
+.bird { margin: 15px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.bird h3 { margin-top: 0; color: #555; }
+.bird .stats { color: #888; font-size: 14px; margin-bottom: 10px; }
+.pair-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.pair { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.pair img { width: 140px; height: 140px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
+.pair .label { font-size: 11px; color: #999; }
+.noise { opacity: 0.5; }
+.legend { padding: 15px; background: white; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.legend img { height: 20px; width: 200px; }
+</style></head><body>
+<h1>Bird Identity Gallery — Attention Explainability</h1>
+<div class="legend">
+<p><strong>How to read:</strong> Each bird shows original crops (top) and attention heatmaps (bottom).
+<span style="color:red">Red/yellow</span> = regions the model focuses on most for identity.
+<span style="color:blue">Blue</span> = regions ignored. Look for consistent patterns across crops of the same bird.</p>
+</div>
+<div class="species-group"><h2>Black-Capped Chickadee</h2>
+<div class="bird"><h3>Black-Capped Chickadee_bird_0</h3>
+<div class="stats">16 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7bcf9e53ba37514521d4ce56ef33c331/crop_01624.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7bcf9e53ba37514521d4ce56ef33c331_c01624_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7bcf9e53ba37514521d4ce56ef33c331/crop_01628.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7bcf9e53ba37514521d4ce56ef33c331_c01628_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a5b50e28ae82df3d69b0e20d51d74eaa/crop_02230.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a5b50e28ae82df3d69b0e20d51d74eaa_c02230_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a5b50e28ae82df3d69b0e20d51d74eaa/crop_02228.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a5b50e28ae82df3d69b0e20d51d74eaa_c02228_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_1</h3>
+<div class="stats">16 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/427bf8633225ad0a92819182e8c6fc09/crop_00915.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/427bf8633225ad0a92819182e8c6fc09_c00915_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/0a4f68c491c05cd7846a1ced5b27e6e4/crop_00186.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/0a4f68c491c05cd7846a1ced5b27e6e4_c00186_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/0a4f68c491c05cd7846a1ced5b27e6e4/crop_00179.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/0a4f68c491c05cd7846a1ced5b27e6e4_c00179_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a5b50e28ae82df3d69b0e20d51d74eaa/crop_02224.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a5b50e28ae82df3d69b0e20d51d74eaa_c02224_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_10</h3>
+<div class="stats">16 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/eb564935c9775bd5baca7dede0d913f7/crop_03438.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/eb564935c9775bd5baca7dede0d913f7_c03438_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/1baed8325e57931f3520444cee078985/crop_00328.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/1baed8325e57931f3520444cee078985_c00328_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a3d662f7374314b9a33b27fc502b2dd6/crop_02190.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a3d662f7374314b9a33b27fc502b2dd6_c02190_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/edc2446267435cb42337875e8b1dbbd7/crop_03475.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/edc2446267435cb42337875e8b1dbbd7_c03475_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_11</h3>
+<div class="stats">6 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/187119e0c142927facaebf7f428c170b/crop_00314.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/187119e0c142927facaebf7f428c170b_c00314_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/187119e0c142927facaebf7f428c170b/crop_00309.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/187119e0c142927facaebf7f428c170b_c00309_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7142ba08235b44f4251d6167ad892996/crop_01455.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7142ba08235b44f4251d6167ad892996_c01455_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/187119e0c142927facaebf7f428c170b/crop_00313.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/187119e0c142927facaebf7f428c170b_c00313_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_12</h3>
+<div class="stats">14 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7142ba08235b44f4251d6167ad892996/crop_01468.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7142ba08235b44f4251d6167ad892996_c01468_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7142ba08235b44f4251d6167ad892996/crop_01469.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7142ba08235b44f4251d6167ad892996_c01469_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/3d7c7778f07f6ce74c37e20b91fd9890/crop_00906.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/3d7c7778f07f6ce74c37e20b91fd9890_c00906_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/51b233c6cb89d7f5bd289662f0afb316/crop_01063.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/51b233c6cb89d7f5bd289662f0afb316_c01063_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_13</h3>
+<div class="stats">14 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/f4681fa89ee7ce69c51c3c1a957d51ef/crop_03519.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/f4681fa89ee7ce69c51c3c1a957d51ef_c03519_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7bcf9e53ba37514521d4ce56ef33c331/crop_01640.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7bcf9e53ba37514521d4ce56ef33c331_c01640_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/4d61c8c0309257498796e3ec7ca2f082/crop_01025.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/4d61c8c0309257498796e3ec7ca2f082_c01025_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e62c84a7514438482ef1abf70442054c/crop_03330.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e62c84a7514438482ef1abf70442054c_c03330_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_14</h3>
+<div class="stats">3 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/1a0ac8df0af4fcc620fc02af0e2e9e66/crop_00325.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/1a0ac8df0af4fcc620fc02af0e2e9e66_c00325_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/1e5284feeb6d992491f2af857605d084/crop_00334.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/1e5284feeb6d992491f2af857605d084_c00334_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/1e5284feeb6d992491f2af857605d084/crop_00335.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/1e5284feeb6d992491f2af857605d084_c00335_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2d7bbe05e4cfef72f93440155fdfbd11/crop_00719.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2d7bbe05e4cfef72f93440155fdfbd11_c00719_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_15</h3>
+<div class="stats">12 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ce9c606ce574414e4a84f55b100db1a7/crop_02969.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ce9c606ce574414e4a84f55b100db1a7_c02969_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b6def37e142b55962f89df9d32be8d7f/crop_02583.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b6def37e142b55962f89df9d32be8d7f_c02583_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/9a2b80e718843b54852b619c5ed24566/crop_02048.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/9a2b80e718843b54852b619c5ed24566_c02048_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e62c84a7514438482ef1abf70442054c/crop_03322.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e62c84a7514438482ef1abf70442054c_c03322_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_16</h3>
+<div class="stats">7 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/9741b588d8eb2eff8218318a7318d3c6/crop_02020.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/9741b588d8eb2eff8218318a7318d3c6_c02020_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2469e9085f0cc340e9598434a0aa5f81/crop_00443.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2469e9085f0cc340e9598434a0aa5f81_c00443_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/94ac324fd8a581e088a6dc29d4c57719/crop_01939.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/94ac324fd8a581e088a6dc29d4c57719_c01939_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/83675cab6594aa30e87242cca661084e/crop_01790.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/83675cab6594aa30e87242cca661084e_c01790_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_17</h3>
+<div class="stats">5 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/22d6c604a0581584822edd8c33728b04/crop_00435.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/22d6c604a0581584822edd8c33728b04_c00435_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2469e9085f0cc340e9598434a0aa5f81/crop_00450.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2469e9085f0cc340e9598434a0aa5f81_c00450_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/22d6c604a0581584822edd8c33728b04/crop_00437.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/22d6c604a0581584822edd8c33728b04_c00437_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/276716b1ec29882375e8565b67d27aff/crop_00478.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/276716b1ec29882375e8565b67d27aff_c00478_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_18</h3>
+<div class="stats">4 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/3c5006fb431f7c66c566bc81f8c13d7a/crop_00901.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/3c5006fb431f7c66c566bc81f8c13d7a_c00901_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/3c5006fb431f7c66c566bc81f8c13d7a/crop_00898.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/3c5006fb431f7c66c566bc81f8c13d7a_c00898_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/918a18cb6689801ea72079b7830ca4c5/crop_01925.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/918a18cb6689801ea72079b7830ca4c5_c01925_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/3c5006fb431f7c66c566bc81f8c13d7a/crop_00900.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/3c5006fb431f7c66c566bc81f8c13d7a_c00900_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_2</h3>
+<div class="stats">7 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/0a4f68c491c05cd7846a1ced5b27e6e4/crop_00178.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/0a4f68c491c05cd7846a1ced5b27e6e4_c00178_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/295aa3d846d1a47c1af8209d5ac36852/crop_00601.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/295aa3d846d1a47c1af8209d5ac36852_c00601_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/295aa3d846d1a47c1af8209d5ac36852/crop_00599.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/295aa3d846d1a47c1af8209d5ac36852_c00599_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/0a4f68c491c05cd7846a1ced5b27e6e4/crop_00176.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/0a4f68c491c05cd7846a1ced5b27e6e4_c00176_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_3</h3>
+<div class="stats">16 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/aeaa57f55aa688c976f75acaa00f0717/crop_02430.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/aeaa57f55aa688c976f75acaa00f0717_c02430_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/8354e41bcd03b02be3103b60b7a20a71/crop_01779.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/8354e41bcd03b02be3103b60b7a20a71_c01779_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/4cf8a881f0411382e69f20d825dfef7f/crop_01001.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/4cf8a881f0411382e69f20d825dfef7f_c01001_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/8354e41bcd03b02be3103b60b7a20a71/crop_01776.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/8354e41bcd03b02be3103b60b7a20a71_c01776_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_4</h3>
+<div class="stats">8 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/55c613b6a65421c3d358e4497f8000a4/crop_01113.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/55c613b6a65421c3d358e4497f8000a4_c01113_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/c1eb9921a3b3e161f63485d61c221c02/crop_02835.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/c1eb9921a3b3e161f63485d61c221c02_c02835_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ae70e63677e85b2d0b9bb2ce99b3abcd/crop_02429.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ae70e63677e85b2d0b9bb2ce99b3abcd_c02429_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/295aa3d846d1a47c1af8209d5ac36852/crop_00602.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/295aa3d846d1a47c1af8209d5ac36852_c00602_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_5</h3>
+<div class="stats">33 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/98aab355e856ea0bbc811e2888c46c4b/crop_02027.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/98aab355e856ea0bbc811e2888c46c4b_c02027_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/44783ff6bae6c220afd61016b94fb441/crop_00921.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/44783ff6bae6c220afd61016b94fb441_c00921_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/8fa75926b350bbe42909b40842496c6a/crop_01918.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/8fa75926b350bbe42909b40842496c6a_c01918_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b6def37e142b55962f89df9d32be8d7f/crop_02586.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b6def37e142b55962f89df9d32be8d7f_c02586_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_6</h3>
+<div class="stats">12 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/12b2bc9b405bee5c07d171d24787702e/crop_00240.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/12b2bc9b405bee5c07d171d24787702e_c00240_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7142ba08235b44f4251d6167ad892996/crop_01473.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7142ba08235b44f4251d6167ad892996_c01473_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/96b8d75b013a43f3ebdd80c4dd1fcaa4/crop_02013.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/96b8d75b013a43f3ebdd80c4dd1fcaa4_c02013_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/12b2bc9b405bee5c07d171d24787702e/crop_00239.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/12b2bc9b405bee5c07d171d24787702e_c00239_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_7</h3>
+<div class="stats">7 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ae158d6131bbb960e711d711ba95060e/crop_02421.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ae158d6131bbb960e711d711ba95060e_c02421_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ae158d6131bbb960e711d711ba95060e/crop_02422.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ae158d6131bbb960e711d711ba95060e_c02422_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/4cf8a881f0411382e69f20d825dfef7f/crop_01003.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/4cf8a881f0411382e69f20d825dfef7f_c01003_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/edc2446267435cb42337875e8b1dbbd7/crop_03477.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/edc2446267435cb42337875e8b1dbbd7_c03477_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_8</h3>
+<div class="stats">5 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/edc2446267435cb42337875e8b1dbbd7/crop_03470.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/edc2446267435cb42337875e8b1dbbd7_c03470_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/edc2446267435cb42337875e8b1dbbd7/crop_03476.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/edc2446267435cb42337875e8b1dbbd7_c03476_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/4c9d0da78fe48773d7ba8d95dfe2404e/crop_00987.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/4c9d0da78fe48773d7ba8d95dfe2404e_c00987_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/87aefedb7b965fe36d77a6ef2636324a/crop_01847.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/87aefedb7b965fe36d77a6ef2636324a_c01847_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Black-Capped Chickadee_bird_9</h3>
+<div class="stats">6 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e8dddfbe31408ac31cbf19c3e9b96f5a/crop_03393.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e8dddfbe31408ac31cbf19c3e9b96f5a_c03393_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/1baed8325e57931f3520444cee078985/crop_00331.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/1baed8325e57931f3520444cee078985_c00331_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e8dddfbe31408ac31cbf19c3e9b96f5a/crop_03391.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e8dddfbe31408ac31cbf19c3e9b96f5a_c03391_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e8dddfbe31408ac31cbf19c3e9b96f5a/crop_03388.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e8dddfbe31408ac31cbf19c3e9b96f5a_c03388_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+</div>
+<div class="species-group"><h2>Chickadee</h2>
+<div class="bird"><h3>Chickadee_bird_0</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/eb564935c9775bd5baca7dede0d913f7/crop_03439.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/eb564935c9775bd5baca7dede0d913f7_c03439_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/eb564935c9775bd5baca7dede0d913f7/crop_03440.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/eb564935c9775bd5baca7dede0d913f7_c03440_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/f4681fa89ee7ce69c51c3c1a957d51ef/crop_03520.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/f4681fa89ee7ce69c51c3c1a957d51ef_c03520_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Chickadee_bird_1</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/427bf8633225ad0a92819182e8c6fc09/crop_00914.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/427bf8633225ad0a92819182e8c6fc09_c00914_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ae70e63677e85b2d0b9bb2ce99b3abcd/crop_02426.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ae70e63677e85b2d0b9bb2ce99b3abcd_c02426_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ae70e63677e85b2d0b9bb2ce99b3abcd/crop_02427.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ae70e63677e85b2d0b9bb2ce99b3abcd_c02427_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ae70e63677e85b2d0b9bb2ce99b3abcd/crop_02428.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ae70e63677e85b2d0b9bb2ce99b3abcd_c02428_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Chickadee_bird_2</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e8dddfbe31408ac31cbf19c3e9b96f5a/crop_03398.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e8dddfbe31408ac31cbf19c3e9b96f5a_c03398_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e8dddfbe31408ac31cbf19c3e9b96f5a/crop_03399.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e8dddfbe31408ac31cbf19c3e9b96f5a_c03399_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e8dddfbe31408ac31cbf19c3e9b96f5a/crop_03397.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e8dddfbe31408ac31cbf19c3e9b96f5a_c03397_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2469e9085f0cc340e9598434a0aa5f81/crop_00441.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2469e9085f0cc340e9598434a0aa5f81_c00441_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Chickadee_bird_3</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/187119e0c142927facaebf7f428c170b/crop_00316.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/187119e0c142927facaebf7f428c170b_c00316_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/80e24ef8d26524192bbbbb7aa85870d6/crop_01723.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/80e24ef8d26524192bbbbb7aa85870d6_c01723_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Chickadee_bird_4</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ae158d6131bbb960e711d711ba95060e/crop_02424.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ae158d6131bbb960e711d711ba95060e_c02424_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ae158d6131bbb960e711d711ba95060e/crop_02425.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ae158d6131bbb960e711d711ba95060e_c02425_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/c89d9fe8bd3faead5b8f89cd2a6f84df/crop_02920.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/c89d9fe8bd3faead5b8f89cd2a6f84df_c02920_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Chickadee_bird_6</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a9fc445d969caf5a2585aef99dcaa9b0/crop_02293.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a9fc445d969caf5a2585aef99dcaa9b0_c02293_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/aeaa57f55aa688c976f75acaa00f0717/crop_02431.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/aeaa57f55aa688c976f75acaa00f0717_c02431_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird noise"><h3>Chickadee_noise</h3>
+<div class="stats">6 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/5ee63de9238711cb7a26ac7b7e8fdaa6/crop_01229.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/5ee63de9238711cb7a26ac7b7e8fdaa6_c01229_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/f1d50ddafafe45bd5b7e1fcc749fcce4/crop_03502.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/f1d50ddafafe45bd5b7e1fcc749fcce4_c03502_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b2bb7f162fc3565aafb63e012e838c6a/crop_02479.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b2bb7f162fc3565aafb63e012e838c6a_c02479_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2e591af106bc8f9ea439017993c29aa6/crop_00723.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2e591af106bc8f9ea439017993c29aa6_c00723_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+</div>
+<div class="species-group"><h2>Dark-Eyed Junco</h2>
+<div class="bird"><h3>Dark-Eyed Junco_bird_0</h3>
+<div class="stats">45 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/20490f4f91ca7383b8653ae760f5a075/crop_00346.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/20490f4f91ca7383b8653ae760f5a075_c00346_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/0c15b2c773ebfdffc3f37b89578972e1/crop_00212.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/0c15b2c773ebfdffc3f37b89578972e1_c00212_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/858ac9d07cf25ebb666d74f5cce6aee6/crop_01833.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/858ac9d07cf25ebb666d74f5cce6aee6_c01833_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2562a205f5adc1a4f4f985d0caa47b51/crop_00460.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2562a205f5adc1a4f4f985d0caa47b51_c00460_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_1</h3>
+<div class="stats">52 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b7e1e2a95b2b2f822c0f2532fa77c237/crop_02614.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b7e1e2a95b2b2f822c0f2532fa77c237_c02614_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/c011da3ea5270f28bfecc4f81461cc9c/crop_02799.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/c011da3ea5270f28bfecc4f81461cc9c_c02799_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/c011da3ea5270f28bfecc4f81461cc9c/crop_02800.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/c011da3ea5270f28bfecc4f81461cc9c_c02800_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/27ee27444f8880c4e8bae3c3ddf32e9c/crop_00562.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/27ee27444f8880c4e8bae3c3ddf32e9c_c00562_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_10</h3>
+<div class="stats">43 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/30b348156f5f7992e16a22df7671440c/crop_00774.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/30b348156f5f7992e16a22df7671440c_c00774_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/9550592ce6d531f73fdb162314d28a78/crop_01962.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/9550592ce6d531f73fdb162314d28a78_c01962_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b7e1e2a95b2b2f822c0f2532fa77c237/crop_02601.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b7e1e2a95b2b2f822c0f2532fa77c237_c02601_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/d7eacb7d23216e016cf0d49106983c54/crop_03146.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/d7eacb7d23216e016cf0d49106983c54_c03146_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_11</h3>
+<div class="stats">9 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/0d0f9a1c3323fcc862e5a66a06e3fe5a/crop_00232.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/0d0f9a1c3323fcc862e5a66a06e3fe5a_c00232_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2ee1db592f0cb9f02609b4319ed4d392/crop_00743.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2ee1db592f0cb9f02609b4319ed4d392_c00743_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2ee1db592f0cb9f02609b4319ed4d392/crop_00750.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2ee1db592f0cb9f02609b4319ed4d392_c00750_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/80e24ef8d26524192bbbbb7aa85870d6/crop_01728.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/80e24ef8d26524192bbbbb7aa85870d6_c01728_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_12</h3>
+<div class="stats">7 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/595576b07a574a3e3e8d42aa67e75af7/crop_01172.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/595576b07a574a3e3e8d42aa67e75af7_c01172_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/595576b07a574a3e3e8d42aa67e75af7/crop_01171.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/595576b07a574a3e3e8d42aa67e75af7_c01171_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/595576b07a574a3e3e8d42aa67e75af7/crop_01168.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/595576b07a574a3e3e8d42aa67e75af7_c01168_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/fd9683a31abfd897520dde8ae6a8d708/crop_03607.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/fd9683a31abfd897520dde8ae6a8d708_c03607_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_13</h3>
+<div class="stats">26 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/01c4417e03d470b4cafa58c32cfc5c78/crop_00036.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/01c4417e03d470b4cafa58c32cfc5c78_c00036_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/3a18ef9c0d287eca38650e22fc1c4d49/crop_00882.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/3a18ef9c0d287eca38650e22fc1c4d49_c00882_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7c358dcba99fad9dc7b8106cd0258ea9/crop_01656.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7c358dcba99fad9dc7b8106cd0258ea9_c01656_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e4e7fc4310707a0a93de6223aa119bac/crop_03309.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e4e7fc4310707a0a93de6223aa119bac_c03309_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_14</h3>
+<div class="stats">25 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/595576b07a574a3e3e8d42aa67e75af7/crop_01159.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/595576b07a574a3e3e8d42aa67e75af7_c01159_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/6455cd0982fa910edadfd69daf396035/crop_01305.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/6455cd0982fa910edadfd69daf396035_c01305_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/89077326104e92711f94532f83dcd960/crop_01875.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/89077326104e92711f94532f83dcd960_c01875_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/769e2c248bc547fa98dc03afbbdf09fb/crop_01500.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/769e2c248bc547fa98dc03afbbdf09fb_c01500_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_15</h3>
+<div class="stats">48 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/fb19e755b74dc76f89bf6b35c1c3d04a/crop_03554.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/fb19e755b74dc76f89bf6b35c1c3d04a_c03554_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/150d7c3f802ff68b28dce57ea252013f/crop_00282.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/150d7c3f802ff68b28dce57ea252013f_c00282_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/01f2b7643af1625ee178aa1643cd0494/crop_00079.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/01f2b7643af1625ee178aa1643cd0494_c00079_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/272129f7ae304886f7bdc6366552ae36/crop_00470.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/272129f7ae304886f7bdc6366552ae36_c00470_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_16</h3>
+<div class="stats">9 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a42573d02540b896448d891aa732134d/crop_02199.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a42573d02540b896448d891aa732134d_c02199_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/d4922fe146100d05ea4e7732b90b5658/crop_03073.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/d4922fe146100d05ea4e7732b90b5658_c03073_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/c011da3ea5270f28bfecc4f81461cc9c/crop_02798.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/c011da3ea5270f28bfecc4f81461cc9c_c02798_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a42573d02540b896448d891aa732134d/crop_02198.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a42573d02540b896448d891aa732134d_c02198_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_17</h3>
+<div class="stats">16 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/d4922fe146100d05ea4e7732b90b5658/crop_03058.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/d4922fe146100d05ea4e7732b90b5658_c03058_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/150d7c3f802ff68b28dce57ea252013f/crop_00260.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/150d7c3f802ff68b28dce57ea252013f_c00260_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/150d7c3f802ff68b28dce57ea252013f/crop_00287.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/150d7c3f802ff68b28dce57ea252013f_c00287_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e2b0f43090ece31461c565bdd46b28fd/crop_03265.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e2b0f43090ece31461c565bdd46b28fd_c03265_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_18</h3>
+<div class="stats">15 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/d91e27319a23d48a666edf5287c582f7/crop_03161.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/d91e27319a23d48a666edf5287c582f7_c03161_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/d91e27319a23d48a666edf5287c582f7/crop_03171.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/d91e27319a23d48a666edf5287c582f7_c03171_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/6a3640de0a759ee8c56cbb331981ba8c/crop_01399.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/6a3640de0a759ee8c56cbb331981ba8c_c01399_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/6a3640de0a759ee8c56cbb331981ba8c/crop_01387.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/6a3640de0a759ee8c56cbb331981ba8c_c01387_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_19</h3>
+<div class="stats">26 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/79bb49dad098cbd23fac6188f44bf34f/crop_01612.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/79bb49dad098cbd23fac6188f44bf34f_c01612_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b7ee3eb86f1123086bbee2a5cc64aa54/crop_02636.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b7ee3eb86f1123086bbee2a5cc64aa54_c02636_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/6455cd0982fa910edadfd69daf396035/crop_01302.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/6455cd0982fa910edadfd69daf396035_c01302_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b7ee3eb86f1123086bbee2a5cc64aa54/crop_02637.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b7ee3eb86f1123086bbee2a5cc64aa54_c02637_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_2</h3>
+<div class="stats">39 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ab36b7b54b5bcdb0e97ddc6ba887c6d9/crop_02337.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ab36b7b54b5bcdb0e97ddc6ba887c6d9_c02337_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/d3765ee617ca34f34689d33fb608cd99/crop_03028.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/d3765ee617ca34f34689d33fb608cd99_c03028_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e6a23352fd71f7beed336e016762a667/crop_03370.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e6a23352fd71f7beed336e016762a667_c03370_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2293e4cc4dc8e55a7c83acf164f1ad80/crop_00424.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2293e4cc4dc8e55a7c83acf164f1ad80_c00424_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_20</h3>
+<div class="stats">24 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ffaf239ec31ab1dcb00af7693f008340/crop_03619.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ffaf239ec31ab1dcb00af7693f008340_c03619_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/01c4417e03d470b4cafa58c32cfc5c78/crop_00007.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/01c4417e03d470b4cafa58c32cfc5c78_c00007_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/276b98886355c364b8451d1a1631c364/crop_00510.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/276b98886355c364b8451d1a1631c364_c00510_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/276b98886355c364b8451d1a1631c364/crop_00485.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/276b98886355c364b8451d1a1631c364_c00485_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_21</h3>
+<div class="stats">29 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/507d2ad111ea7b8cdf43439f03af0275/crop_01055.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/507d2ad111ea7b8cdf43439f03af0275_c01055_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b0e4c6ad86ba9b7f792c277872b9d7f7/crop_02462.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b0e4c6ad86ba9b7f792c277872b9d7f7_c02462_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/507d2ad111ea7b8cdf43439f03af0275/crop_01042.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/507d2ad111ea7b8cdf43439f03af0275_c01042_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/95ce12f5191cd5f5597d402040f2cc09/crop_02001.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/95ce12f5191cd5f5597d402040f2cc09_c02001_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_22</h3>
+<div class="stats">18 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/fb19e755b74dc76f89bf6b35c1c3d04a/crop_03556.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/fb19e755b74dc76f89bf6b35c1c3d04a_c03556_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/fd8bc5592cbf59913fd3900bbeee4dbc/crop_03596.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/fd8bc5592cbf59913fd3900bbeee4dbc_c03596_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/acd7cef4d90026094b07632264519b1a/crop_02406.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/acd7cef4d90026094b07632264519b1a_c02406_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ab9a6edfeb4d9c185e28b9cb6b1b13a5/crop_02351.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ab9a6edfeb4d9c185e28b9cb6b1b13a5_c02351_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_23</h3>
+<div class="stats">4 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/e439a4c63ff3a47c84b6125812f457ed/crop_03288.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/e439a4c63ff3a47c84b6125812f457ed_c03288_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7c358dcba99fad9dc7b8106cd0258ea9/crop_01648.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7c358dcba99fad9dc7b8106cd0258ea9_c01648_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ffaf239ec31ab1dcb00af7693f008340/crop_03623.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ffaf239ec31ab1dcb00af7693f008340_c03623_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/60313895cd1f428a29623aba42935215/crop_01242.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/60313895cd1f428a29623aba42935215_c01242_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_24</h3>
+<div class="stats">4 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/f66fcb9cedfa697eb3c4db12b4f1d360/crop_03525.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/f66fcb9cedfa697eb3c4db12b4f1d360_c03525_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/f66fcb9cedfa697eb3c4db12b4f1d360/crop_03523.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/f66fcb9cedfa697eb3c4db12b4f1d360_c03523_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/d4922fe146100d05ea4e7732b90b5658/crop_03072.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/d4922fe146100d05ea4e7732b90b5658_c03072_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/f66fcb9cedfa697eb3c4db12b4f1d360/crop_03524.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/f66fcb9cedfa697eb3c4db12b4f1d360_c03524_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_25</h3>
+<div class="stats">30 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2b92e24260bb2c221ac93e088b9a61e7/crop_00614.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2b92e24260bb2c221ac93e088b9a61e7_c00614_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/276b98886355c364b8451d1a1631c364/crop_00490.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/276b98886355c364b8451d1a1631c364_c00490_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/de395a19a20ca0fe7fb2e4eeb87479e8/crop_03215.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/de395a19a20ca0fe7fb2e4eeb87479e8_c03215_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ffaf239ec31ab1dcb00af7693f008340/crop_03609.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ffaf239ec31ab1dcb00af7693f008340_c03609_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_3</h3>
+<div class="stats">40 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/9f5c1ef28a688f203397cb64950d1f1e/crop_02101.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/9f5c1ef28a688f203397cb64950d1f1e_c02101_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/6455cd0982fa910edadfd69daf396035/crop_01317.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/6455cd0982fa910edadfd69daf396035_c01317_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/72257ba9f8f5eaf522fa3a0df29e555e/crop_01480.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/72257ba9f8f5eaf522fa3a0df29e555e_c01480_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/bf0ececc17197b3f0c6e3ce4ee72f0dc/crop_02769.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/bf0ececc17197b3f0c6e3ce4ee72f0dc_c02769_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_4</h3>
+<div class="stats">18 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/d7eacb7d23216e016cf0d49106983c54/crop_03155.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/d7eacb7d23216e016cf0d49106983c54_c03155_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2d304b8ca6d4cde682e3803790969183/crop_00684.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2d304b8ca6d4cde682e3803790969183_c00684_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/de395a19a20ca0fe7fb2e4eeb87479e8/crop_03222.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/de395a19a20ca0fe7fb2e4eeb87479e8_c03222_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a83cdc3822e5a36ca6a34e6ed637050a/crop_02283.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a83cdc3822e5a36ca6a34e6ed637050a_c02283_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_5</h3>
+<div class="stats">7 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2ee1db592f0cb9f02609b4319ed4d392/crop_00727.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2ee1db592f0cb9f02609b4319ed4d392_c00727_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/9f5452432d7fa90508aeab9e218f8858/crop_02094.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/9f5452432d7fa90508aeab9e218f8858_c02094_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/2ee1db592f0cb9f02609b4319ed4d392/crop_00760.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/2ee1db592f0cb9f02609b4319ed4d392_c00760_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a085b46b1bbe9272991af83618edff09/crop_02178.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a085b46b1bbe9272991af83618edff09_c02178_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_6</h3>
+<div class="stats">63 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b9039a2f0e1d08e14657182a1c0ece22/crop_02699.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b9039a2f0e1d08e14657182a1c0ece22_c02699_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/20490f4f91ca7383b8653ae760f5a075/crop_00340.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/20490f4f91ca7383b8653ae760f5a075_c00340_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/f11fc02b51437e07e960b57dd00d725c/crop_03490.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/f11fc02b51437e07e960b57dd00d725c_c03490_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/a82f5b57222aa0ff116d17c61291faf2/crop_02256.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/a82f5b57222aa0ff116d17c61291faf2_c02256_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_7</h3>
+<div class="stats">24 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b4570f8bc56448e28e77a08c25e573f4/crop_02512.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b4570f8bc56448e28e77a08c25e573f4_c02512_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b845b3224e8855a693f90c110cde67fe/crop_02654.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b845b3224e8855a693f90c110cde67fe_c02654_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b8ca0989c1fe6524409499cd3e090d5f/crop_02692.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b8ca0989c1fe6524409499cd3e090d5f_c02692_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/b845b3224e8855a693f90c110cde67fe/crop_02659.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/b845b3224e8855a693f90c110cde67fe_c02659_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_8</h3>
+<div class="stats">19 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/4cf8a881f0411382e69f20d825dfef7f/crop_01015.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/4cf8a881f0411382e69f20d825dfef7f_c01015_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/c2cc7bf281a8405756ada630d56dc98d/crop_02867.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/c2cc7bf281a8405756ada630d56dc98d_c02867_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/6b01c0cb9446793e8f81ebf2df676c7f/crop_01431.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/6b01c0cb9446793e8f81ebf2df676c7f_c01431_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/21cf9c6b73672a28d77efa5f4f011657/crop_00405.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/21cf9c6b73672a28d77efa5f4f011657_c00405_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Dark-Eyed Junco_bird_9</h3>
+<div class="stats">7 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ab9a6edfeb4d9c185e28b9cb6b1b13a5/crop_02366.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ab9a6edfeb4d9c185e28b9cb6b1b13a5_c02366_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ab9a6edfeb4d9c185e28b9cb6b1b13a5/crop_02352.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ab9a6edfeb4d9c185e28b9cb6b1b13a5_c02352_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/ea616eaf5bb39955b2adcf0f14f39e32/crop_03414.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/ea616eaf5bb39955b2adcf0f14f39e32_c03414_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/94ac324fd8a581e088a6dc29d4c57719/crop_01946.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/94ac324fd8a581e088a6dc29d4c57719_c01946_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+</div>
+<div class="species-group"><h2>Golden-Crowned Sparrow</h2>
+<div class="bird"><h3>Golden-Crowned Sparrow_bird_0</h3>
+<div class="stats">5 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/39383f32d47c351a93fd24547da1dca3/crop_00844.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/39383f32d47c351a93fd24547da1dca3_c00844_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/39383f32d47c351a93fd24547da1dca3/crop_00828.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/39383f32d47c351a93fd24547da1dca3_c00828_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/c1eb9921a3b3e161f63485d61c221c02/crop_02832.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/c1eb9921a3b3e161f63485d61c221c02_c02832_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/837f8b76f6874c4ddd9cd550deb76604/crop_01804.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/837f8b76f6874c4ddd9cd550deb76604_c01804_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>Golden-Crowned Sparrow_bird_2</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/39383f32d47c351a93fd24547da1dca3/crop_00826.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/39383f32d47c351a93fd24547da1dca3_c00826_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/837f8b76f6874c4ddd9cd550deb76604/crop_01801.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/837f8b76f6874c4ddd9cd550deb76604_c01801_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird noise"><h3>Golden-Crowned Sparrow_noise</h3>
+<div class="stats">1 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/39383f32d47c351a93fd24547da1dca3/crop_00841.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/39383f32d47c351a93fd24547da1dca3_c00841_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/39383f32d47c351a93fd24547da1dca3/crop_00842.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/39383f32d47c351a93fd24547da1dca3_c00842_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+</div>
+<div class="species-group"><h2>House Finch</h2>
+<div class="bird"><h3>House Finch_bird_0</h3>
+<div class="stats">3 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/798e34fde314055c4a3a062d40afece0/crop_01586.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/798e34fde314055c4a3a062d40afece0_c01586_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/798e34fde314055c4a3a062d40afece0/crop_01590.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/798e34fde314055c4a3a062d40afece0_c01590_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/9f41e02d4b3f548be91aad6ad6f831af/crop_02075.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/9f41e02d4b3f548be91aad6ad6f831af_c02075_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/798e34fde314055c4a3a062d40afece0/crop_01588.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/798e34fde314055c4a3a062d40afece0_c01588_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>House Finch_bird_1</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7efffd79544bab753c25c028a4ca977c/crop_01689.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7efffd79544bab753c25c028a4ca977c_c01689_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/798e34fde314055c4a3a062d40afece0/crop_01565.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/798e34fde314055c4a3a062d40afece0_c01565_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7efffd79544bab753c25c028a4ca977c/crop_01687.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7efffd79544bab753c25c028a4ca977c_c01687_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/7efffd79544bab753c25c028a4ca977c/crop_01719.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/7efffd79544bab753c25c028a4ca977c_c01719_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird"><h3>House Finch_bird_2</h3>
+<div class="stats">2 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/798e34fde314055c4a3a062d40afece0/crop_01575.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/798e34fde314055c4a3a062d40afece0_c01575_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/798e34fde314055c4a3a062d40afece0/crop_01584.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/798e34fde314055c4a3a062d40afece0_c01584_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/9f41e02d4b3f548be91aad6ad6f831af/crop_02071.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/9f41e02d4b3f548be91aad6ad6f831af_c02071_attn.jpg" alt="attention"><div class="label">attention</div></div>
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/798e34fde314055c4a3a062d40afece0/crop_01573.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/798e34fde314055c4a3a062d40afece0_c01573_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+<div class="bird noise"><h3>House Finch_noise</h3>
+<div class="stats">1 sessions</div>
+<div class="pair-grid">
+<div class="pair"><img src="file:///Users/vaishak/Documents/BirdRe-Id/data/crops/9f41e02d4b3f548be91aad6ad6f831af/crop_02069.jpg" alt="original"><div class="label">original</div><img src="file:///Users/vaishak/Documents/BirdRe-Id/clusters/heatmaps/9f41e02d4b3f548be91aad6ad6f831af_c02069_attn.jpg" alt="attention"><div class="label">attention</div></div>
+</div></div>
+</div>
+</body></html>

@@ -40,7 +40,10 @@ def compute_session_embeddings(
     """Compute mean embedding per session, L2-normalized."""
     session_embs = []
     for session in sessions:
-        indices = [crop_id_to_idx[cid] for cid in session["crop_ids"]]
+        crop_ids = session["crop_ids"]
+        if isinstance(crop_ids, str):
+            crop_ids = crop_ids.split(",")
+        indices = [crop_id_to_idx[cid] for cid in crop_ids]
         mean_emb = crop_embeddings[indices].mean(axis=0)
         mean_emb /= np.linalg.norm(mean_emb)
         session_embs.append(mean_emb)

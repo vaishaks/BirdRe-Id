@@ -111,7 +111,7 @@ def run_clustering(
 
         # PCA — drop top N components that capture pose/orientation
         # Top PCs capture pose (23% + 10% variance), not individual identity
-        N_DROP_POSE = 2  # drop top 2 PCs (pose + lighting)
+        N_DROP_POSE = 3  # drop top 3 PCs (pose, orientation, lighting)
         n_comp = min(30, len(species_embs) - 1)
         pca = PCA(n_components=n_comp, random_state=42)
         transformed = pca.fit_transform(species_embs)
